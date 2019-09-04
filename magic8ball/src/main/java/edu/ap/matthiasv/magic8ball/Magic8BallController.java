@@ -31,11 +31,11 @@ public class Magic8BallController {
         return "addQuestion";
     }
 
-    @PostMapping("/question")
+    @PostMapping(value = "/question/{question}")
     public String addQuestion(@RequestParam("question") String question, @RequestParam("answer") String answer) {
 
-        this.service.setKey(question, answer);
-        return "/showQuestion";
+        this.service.setKey("question:" + question, answer);
+        return "getQuestionForm";
     }
 
 }
